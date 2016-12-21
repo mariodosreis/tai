@@ -1,0 +1,57 @@
+#! /usr/bin/perl
+#
+# This program is an interface to make calling 'codonW' a more pleasant
+# experience. 
+#
+# Copywrigth (c) 2003 Mario dos Reis
+#
+# This file forms part of codonR, a package for the analysis of codon
+# usage in DNA coding sequences.
+#
+# codonR is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+# Mario dos Reis
+# m.reis@mail.cryst.bbk.ac.uk
+# School of Crystallography
+# Birkbeck College
+# London WC1E 7HX
+#
+# version 0.2 (Nov 2003)
+#########################################################################
+
+use strict;
+use warnings;
+
+if(@ARGV < 2) {
+    print "\nWelcome to codonZ, interface for codonW\n",
+    "usage: codonZ <INFILE> <OUTFILE>\n";
+    exit;
+}
+
+my $infile = $ARGV[0]; # $infile must be a FastA format sequence file
+my $outfile = $ARGV[1];
+my $blkfile = $outfile . "blk";
+
+my $options = "-enc -gc -gc3s -L_aa -nomenu -silent -nowarn";
+
+unless(-e $infile) {
+    die "$infile does not exist!\n";
+}
+
+system "codonW $infile $outfile $blkfile $options";
+
+system "dos2unix $outfile"; # cleans the tedious codonW sep characters
+
+`rm $blkfile`; # removes the annoyingly big bulk file
