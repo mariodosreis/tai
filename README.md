@@ -12,6 +12,7 @@ INSTALLATION
 From the R prompt, type
 
 > require(devtools) # it is assummed they devtools package is installed
+
 > install_bithub("mariodosreis/tai")
 
 And that's it! The package has been installed!
