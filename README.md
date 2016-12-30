@@ -149,9 +149,7 @@ the relative adaptiveness values for each codon in the E. coli genes:
 ~~~
 Now, lets load the output of codonM into R:
 ~~~
-> eco.m <-
-  matrix(scan("misc/ecolik12.m"),
-  ncol=61, byrow=T)
+> eco.m <- matrix(scan("misc/ecolik12.m"), ncol=61, byrow=T)
 ~~~
 We will ignore Methionine codons in our analysis (there is no
 automatic way to differentiate between 'START' Met-tRNA genes and
