@@ -157,7 +157,7 @@ normal Met-tRNAs in any genome):
 ~~~
 > eco.m <- eco.m[,-33]
 ~~~
-And now we an finally calculate tAI:
+Now we can finally calculate tAI:
 ~~~
 > eco.tai <- get.tai(eco.m, eco.ws)
 > hist(eco.tai)
