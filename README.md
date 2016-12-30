@@ -39,7 +39,7 @@ it in!).
 The tRNA adaptation index (tAI) measures the degree of co-adaptation
 between a coding sequence and the tRNA pool of an organism (dos Reis 2003, 2004). File
 `misc/ecolik12.ffn` contains 49 coding sequences extracted from the genome
-of Escherichia coli K-12. We can use the files in the package to
+of *Escherichia coli* K-12. We can use the files in the package to
 calculate tAI for each one of the genes contained in this file. First we
 need to calculate the frequencies of the 61 coding codons for every
 sequence. Go to the `misc` directory in this package and
@@ -134,7 +134,7 @@ the R prompt). Type:
 ~~~
 This will load the necessary functions into R. The file
 `ecolik12.trna` contains the gene copy number of every kind of tRNA in
-the E. coli K-12 genome. We need this information in order to
+the *E. coli* K-12 genome. We need this information in order to
 calculate tAI:
 ~~~
 > eco.trna <- scan("ecolik12.trna")
