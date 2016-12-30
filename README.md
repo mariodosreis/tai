@@ -9,11 +9,12 @@ Public License. See the file LICENSE for details.
 INSTALLATION
 ----------------------------------------------------------------------
 
-Just uncompress the package in a directory of your choice. The
-programs were written and tested in GNU/Linux although they should work
-in other operating systems that can run R and perl.
+From the R prompt, type
 
+> require(devtools) # it is assummed they devtools package is installed
+> install_bithub("mariodosreis/tai")
 
+And that's it! The package has been installed!
 
 OTHER (PERHAPS) USEFUL INFORMATION
 ----------------------------------------------------------------------
