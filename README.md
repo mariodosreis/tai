@@ -157,7 +157,7 @@ normal Met-tRNAs in any genome):
 ~~~
 > eco.m <- eco.m[,-33]
 ~~~
-And now we an finally calculate tAI:
+Now we can finally calculate tAI:
 ~~~
 > eco.tai <- get.tai(eco.m, eco.ws)
 > hist(eco.tai)
@@ -215,6 +215,6 @@ For more details, read the references!
 REFERENCES
 ----------------------------------------------------------------------
 
-[1] dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between gene expression and codon usage bias from microarray data for the whole Escherichia coli K-12 genome. *Nucleic Acids Research*, **31:** 6976--6985.
+[1] dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between gene expression and codon usage bias from microarray data for the whole Escherichia coli K-12 genome. *Nucleic Acids Research*, **31:** 6976–6985.
 
-[2] dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage preferences: a test for translational selection. *Nucleic Acids Research*, **32:** 5036--5044.
+[2] dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage preferences: a test for translational selection. *Nucleic Acids Research*, **32:** 5036–5044.
