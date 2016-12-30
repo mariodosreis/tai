@@ -6,22 +6,10 @@ adaptation index (tAI) described in dos Reis et al. (2003, 2004). The tAI
 package is distributed WITHOUT WARRANTY under the terms of the GNU General 
 Public License. See the file LICENSE for details.
 
-INSTALLATION
-----------------------------------------------------------------------
-
-From the R prompt (assumming you have the devtools package installed) type
-~~~
-> devtools::install_github("mariodosreis/tai")
-~~~
-And that's it! The package has been installed!
-
-OTHER (PERHAPS) USEFUL INFORMATION
-----------------------------------------------------------------------
-
 This package is basically the same I used in my paper on tAI (see
 references), with just a few minor modifications to make it a little
 friendlier. If you have any doubts, questions, bug reports,
-etc. please contact the author at:
+etc. please contact me at:
 
 Mario dos Reis
 
@@ -31,6 +19,15 @@ School of Biological and Chemical Sciences
 
 Queen Mary University of London
 
+
+INSTALLATION
+----------------------------------------------------------------------
+
+From the R prompt (assumming you have the devtools package installed) type
+~~~
+> devtools::install_github("mariodosreis/tai")
+~~~
+And that's it! The package has been installed!
 
 
 QUICK TUTORIAL
@@ -65,129 +62,69 @@ matrix of codon frequencies per ORF. It should look like:
 Each row represents one ORF or gene (in our case, there should be 49
 rows in the file 'ecolik12.m'), and the columns represent each one of
 the 61 coding codons, arranged in this fashion:
-
+~~~
 1	TTT
-
 2	TTC
-
 3	TTA
-
 4	TTG
-
 5	TCT
-
 6	TCC
-
 7	TCA
-
 8	TCG
-
 9	TAT
-
 10	TAC
-
 11	TGT
-
 12	TGC
-
 13	TGG
-
 14	CTT
-
 15	CTC
-
 16	CTA
-
 17	CTG
-
 18	CCT
-
 19	CCC
-
 20	CCA
-
 21	CCG
-
 22	CAT
-
 23	CAC
-
 24	CAA
-
 25	CAG
-
 26	CGT
-
 27	CGC
-
 28	CGA
-
 29	CGG
-
 30	ATT
-
 31	ATC
-
 32	ATA
-
 33	ATG
-
 34	ACT
-
 35	ACC
-
 36	ACA
-
 37	ACG
-
 38	AAT
-
 39	AAC
-
 40	AAA
-
 41	AAG
-
 42	AGT
-
 43	AGC
-
 44	AGA
-
 45	AGG
-
 46	GTT
-
 47	GTC
-
 48	GTA
-
 49	GTG
-
 50	GCT
-
 51	GCC
-
 52	GCA
-
 53	GCG
-
 54	GAT
-
 55	GAC
-
 56	GAA
-
 57	GAG
-
 58	GGT
-
 59	GGC
-
 60	GGA
-
 61	GGG
-
+~~~
 Notice that STOP codons have been excluded. codonM, also ignores the
 first codon in every sequence, this is because it is always a
 Methionine codon (even if its not coded by the canonical ATG).
