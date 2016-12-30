@@ -38,7 +38,7 @@ it in!).
 
 The tRNA adaptation index (tAI) measures the degree of co-adaptation
 between a coding sequence and the tRNA pool of an organism (dos Reis 2003, 2004). File
-`ecolik12.ffn` contains 49 coding sequences extracted from the genome
+`misc/ecolik12.ffn` contains 49 coding sequences extracted from the genome
 of Escherichia coli K-12. We can use the files in the package to
 calculate tAI for each one of the genes contained in this file. First we
 need to calculate the frequencies of the 61 coding codons for every
