@@ -44,8 +44,7 @@ of Escherichia coli K-12. We can use the files in the package to
 calculate tAI for each one of the genes contained in this file. First we
 need to calculate the frequencies of the 61 coding codons for every
 sequence. Go to the directory where you saved this package files and
-type (note that perl must be in your path, and installed in your
-system):
+type (note that perl must be installed in your system and in your path):
 ~~~
 $ perl codonM ecolik12.ffn ecolik12.m
 ~~~
@@ -131,39 +130,39 @@ Methionine codon (even if its not coded by the canonical ATG).
 
 Now start R in the same directory you have been working. (> indicates
 the R prompt). Type:
-
+~~~
 > source("tAI.R")
-
+~~~
 This will load the necessary functions into R. The file
 'ecolik12.trna' contains the gene copy number of every tRNA species in
 the E. coli K-12 genome. We need this information in order to
 calculate tAI:
-
+~~~
 > eco.trna <- scan("ecolik12.trna")
-
+~~~
 This file contains 64 columns, corresponding the codons recognised by
 each tRNA species. No we can calculate the relative adaptiveness
 values for each codon for the E. coli genome:
-
+~~~
 > eco.ws <- get.ws(tRNA=eco.trna, sking=1)
-
+~~~
 Now, lets retrieve the output of codonM:
-
+~~~
 > eco.m <-
   matrix(scan("/home/dycotiles/code/projects/codonR/ecolik12.m"),
   ncol=61, byrow=T)
-
+~~~
 We will ignore Methionine codons in our analysis (there is no
 automatic way to differentiate between 'START' Met-tRNA genes and
 normal Met-tRNAs in any genome):
-
+~~~
 > eco.m <- eco.m[,-33]
-
+~~~
 And now we an finally calculate tAI:
-
+~~~
 > eco.tai <- get.tai(eco.m, eco.ws)
 > hist(eco.tai)
-
+~~~
 The last command will plot an histogram of the tAI values. Highly
 expressed genes present high tAI values (> 0.4), which means that
 their codon usage resembles the genomic structure of tRNA genes.
@@ -175,9 +174,9 @@ sequence in 'ecolik12.ffn'. You should have codonW (or other codon usage
 package able to calculate Nc) installed. If you do have codonW, and it
 is in your path, you can use codonZ to quickly and efficiently compute
 a set of codon usage statistics. At the shell type:
-
+~~~
 $ codonZ ecolik12.ffn ecolik12.w
-
+~~~
 Now from the R prompt:
 ~~~
 > df <- read.table("ecolik12.w", header=T)
@@ -185,28 +184,28 @@ Now from the R prompt:
 If you are using the codonW version distributed by me, the above
 command should work fine, if you are working with the original
 distribution, you should type instead:
-
+~~~
 > df <- read.table("ecolik12.w", header=T, na.strings = "*****")
-
+~~~
 Lets plot the relationship between tAI and Nc:
-
+~~~
 > plot(eco.tai ~ df$Nc)
-
+~~~
 As you can see, genes with very low Nc values (highly biased),
 correlate with high tAI values (highly co-adapted to the tRNA gene
 pool).
-
+~~~
 > cor(eco.tai, df$Nc, use="p")
-
+~~~
 You should get a value of -0.9100338
 
 Formally, we can calculate the correlation between tAI, and the
 corrected Nc [Nc - f(GC3s)], we call this correlation S, because it
 reflects the intensity of translational selection acting on our sample
 of genes:
-
+~~~
 > eco.s <- get.s(eco.tai, df$Nc, df$GC3s)
-
+~~~
 You should get a value of 0.9065442
 
 For more details, read the references!
