@@ -3,12 +3,12 @@
 # adaptation index (tAI), the S value (or correlation between tAI and the
 # adjusted Nc) and other auxiliary functions.
 #
-# Copyright (c) 2003 Mario dos Reis
+# Copyright (c) 2016-2003 Mario dos Reis
 #
-# This file forms part of codonR, a package for the analysis of codon
+# This file forms part of tAI, a package for the analysis of codon
 # usage in DNA coding sequences.
 #
-# codonR is free software; you can redistribute it and/or
+# tAI is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
@@ -23,18 +23,17 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 # Mario dos Reis
-# m.reis@mail.cryst.bbk.ac.uk
-# School of Crystallography
-# Birkbeck College
-# London WC1E 7HX
+# mariodosreis@gmail.com
 #
-# version 0.2 (Nov 2003)
+# version 0.21 (Dec 2016)
 ###########################################################################
 
 ##########################################################################
-# Optimised Nc adjusted function:
+# Adjusted Nc
 ##########################################################################
-
+#' Adjusted effective number of codons (Nc)
+#' 
+#' @export
 nc.adj <- function(nc, gc3) {
 
   a = -6.0    # a, b, and c have already been optimised
@@ -52,8 +51,11 @@ nc.adj <- function(nc, gc3) {
 # non-optimised s-values:
 # s <- c(0, 0, 0, 0, 0.5, 0.5, 0.75, 0.5, 0.5)
 # optimised s-values:
-ops <- c(0.0, 0.0, 0.0, 0.0, 0.41, 0.28, 0.9999, 0.68, 0.89)
+# ops <- c(0.0, 0.0, 0.0, 0.0, 0.41, 0.28, 0.9999, 0.68, 0.89)
 
+#' Relative adaptiveness values
+#' 
+#' @export
 get.ws <- function(tRNA,  # tRNA gene copy number
                    s = ops,     # selective constraints
                    sking) # super kingdom: 0-eukaryota, 1-prokaryota
@@ -98,7 +100,8 @@ get.ws <- function(tRNA,  # tRNA gene copy number
 # calculated. x is a matrix with all the codon frequencies per ORF in any
 # analysed genome
 #############################################################################
-
+#' The tRNA adaptation index
+#' @export
 get.tai <- function(x,w) {
 
   w = log(w)			#calculate log of w
@@ -114,7 +117,8 @@ get.tai <- function(x,w) {
 # After calculating tAI, we can then calculate S, i.e. the correlation
 # between tAI and g(GC3s) - Nc (aka nc.adj)
 ############################################################################
-
+#' Correlation between tAI and Nc adjusted
+#' @export
 get.s <- function(tAI, nc, gc3) {
 
   nc.ad <- nc.adj(nc, gc3)
@@ -125,7 +129,8 @@ get.s <- function(tAI, nc, gc3) {
 #############################################################################
 # Statistical test for tAI
 #############################################################################
-
+#' Monte Carlo test of correlation between tAI and Nc adjusted
+#' @export
 ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
 
   # create a matrix of randomly permuted w-values:
