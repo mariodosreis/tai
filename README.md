@@ -42,12 +42,12 @@ between a coding sequence and the tRNA pool of an organism (dos Reis 2003, 2004)
 of Escherichia coli K-12. We can use the files in the package to
 calculate tAI for each one of the genes contained in this file. First we
 need to calculate the frequencies of the 61 coding codons for every
-sequence. Go to the directory where you saved this package files and
+sequence. Go to the `misc` directory in this package and
 type (note that perl must be installed in your system and in your path):
 ~~~
 $ perl codonM ecolik12.ffn ecolik12.m
 ~~~
-The file 'ecolik12.m' contains the output of the codonM script: a
+The file `ecolik12.m` contains the output of the codonM script: a
 matrix of codon frequencies per ORF. It should look like:
 ~~~
 11	19	10	13	11	10	6	9	...
@@ -58,7 +58,7 @@ matrix of codon frequencies per ORF. It should look like:
 ...
 ~~~
 Each row represents one ORF or gene (in our case, there should be 49
-rows in the file 'ecolik12.m'), and the columns represent each one of
+rows in the file `ecolik12.m`), and the columns represent each one of
 the 61 coding codons, arranged in this fashion:
 ~~~
 1	TTT
@@ -127,21 +127,23 @@ Notice that STOP codons have been excluded. codonM, also ignores the
 first codon in every sequence, this is because it is always a
 Methionine codon (even if its not coded by the canonical ATG).
 
-Now start R in the same directory you have been working. (> indicates
+Now start R in the same directory you have been working. (`>` indicates
 the R prompt). Type:
 ~~~
-> source("tAI.R")
+> require("tAI")
 ~~~
 This will load the necessary functions into R. The file
-'ecolik12.trna' contains the gene copy number of every tRNA species in
+`ecolik12.trna` contains the gene copy number of every kind of tRNA in
 the E. coli K-12 genome. We need this information in order to
 calculate tAI:
 ~~~
 > eco.trna <- scan("ecolik12.trna")
 ~~~
-This file contains 64 columns, corresponding the codons recognised by
-each tRNA species. No we can calculate the relative adaptiveness
-values for each codon for the E. coli genome:
+This file contains 64 rows, corresponding to the anticodon complements of
+each tRNA species (e.g. if the tRNA anticodon is GAA, the complement is TTC). The tRNAs 
+are ordered according to their anticodon complement, in the same order as in codonM's
+output as indicated above (but with added STOP codon complements). Now we can calculate 
+the relative adaptiveness values for each codon in the E. coli genes:
 ~~~
 > eco.ws <- get.ws(tRNA=eco.trna, sking=1)
 ~~~
@@ -169,7 +171,7 @@ their codon usage resembles the genomic structure of tRNA genes.
 Now a good question arises, how much of the total codon usage of this
 genes (in terms of Nc) is due to adaptation to the tRNA gene pool? In
 order to answer this question, we need to calculate Nc for every
-sequence in 'ecolik12.ffn'. You should have codonW (or other codon usage
+sequence in `ecolik12.ffn`. You should have codonW (or other codon usage
 package able to calculate Nc) installed. If you do have codonW, and it
 is in your path, you can use codonZ to quickly and efficiently compute
 a set of codon usage statistics. At the shell type:
@@ -178,13 +180,13 @@ $ codonZ ecolik12.ffn ecolik12.w
 ~~~
 Now from the R prompt:
 ~~~
-> df <- read.table("ecolik12.w", header=T)
+> df <- read.table("ecolik12.w", header=TRUE)
 ~~~
 If you are using the codonW version distributed by me, the above
 command should work fine, if you are working with the original
 distribution, you should type instead:
 ~~~
-> df <- read.table("ecolik12.w", header=T, na.strings = "*****")
+> df <- read.table("ecolik12.w", header=TRUE, na.strings = "*****")
 ~~~
 Lets plot the relationship between tAI and Nc:
 ~~~
@@ -199,7 +201,7 @@ pool).
 You should get a value of -0.9100338
 
 Formally, we can calculate the correlation between tAI, and the
-corrected Nc [Nc - f(GC3s)], we call this correlation S, because it
+corrected Nc, Nc - f(GC3s), we call this correlation S, because it
 reflects the intensity of translational selection acting on our sample
 of genes:
 ~~~
