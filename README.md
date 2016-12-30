@@ -49,7 +49,7 @@ $ perl codonM ecolik12.ffn ecolik12.m
 The file 'ecolik12.m' contains the output of the codonM script: a
 matrix of codon frequencies per ORF. It should look like:
 
-11	19	10	13	11	10	6	9	...
+`11	19	10	13	11	10	6	9	...
 
 6	4	3	6	0	6	1	3	...
 
@@ -57,16 +57,13 @@ matrix of codon frequencies per ORF. It should look like:
 
 0	0	2	0	1	1	1	0	...
 
-8	8	2	6	0	4	2	1	...
+8	8	2	6	0	4	2	1	...`
 
 ...
 
 Each row represents one ORF or gene (in our case, there should be 49
 rows in the file 'ecolik12.m'), and the columns represent each one of
 the 61 coding codons, arranged in this fashion:
-
-column  codon
--------------
 
 1	TTT
 
