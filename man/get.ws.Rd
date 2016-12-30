@@ -4,7 +4,7 @@
 \alias{get.ws}
 \title{Relative adaptiveness values}
 \usage{
-get.ws(tRNA, s = ops, sking)
+get.ws(tRNA, s = NULL, sking)
 }
 \description{
 Relative adaptiveness values

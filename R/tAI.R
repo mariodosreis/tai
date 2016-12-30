@@ -50,16 +50,17 @@ nc.adj <- function(nc, gc3) {
 
 # non-optimised s-values:
 # s <- c(0, 0, 0, 0, 0.5, 0.5, 0.75, 0.5, 0.5)
-# optimised s-values:
-# ops <- c(0.0, 0.0, 0.0, 0.0, 0.41, 0.28, 0.9999, 0.68, 0.89)
+
 
 #' Relative adaptiveness values
 #' 
 #' @export
 get.ws <- function(tRNA,  # tRNA gene copy number
-                   s = ops,     # selective constraints
+                   s = NULL,     # selective constraints
                    sking) # super kingdom: 0-eukaryota, 1-prokaryota
 {
+  # optimised s-values:
+  if(is.null(s)) s <- c(0.0, 0.0, 0.0, 0.0, 0.41, 0.28, 0.9999, 0.68, 0.89)
 
   p = 1 - s
 
