@@ -247,9 +247,9 @@ a set of codon usage statistics. At the shell type:
 $ codonZ ecolik12.ffn ecolik12.w
 
 Now from the R prompt:
-
+~~~
 > df <- read.table("ecolik12.w", header=T)
-
+~~~
 If you are using the codonW version distributed by me, the above
 command should work fine, if you are working with the original
 distribution, you should type instead:
@@ -284,6 +284,6 @@ For more details, read the references!
 REFERENCES
 ----------------------------------------------------------------------
 
-[1] dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between gene expression and codon usage bias from microarray data for the whole Escherichia coli K-12 genome. Nucleic Acids Research, 31: 6976--6985.
+[1] dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between gene expression and codon usage bias from microarray data for the whole Escherichia coli K-12 genome. *Nucleic Acids Research*, **31:** 6976--6985.
 
-[2] dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage preferences: a test for translational selection. Nucleic Acids Research, 32: 5036--5044.
+[2] dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage preferences: a test for translational selection. *Nucleic Acids Research*, **32:** 5036--5044.
