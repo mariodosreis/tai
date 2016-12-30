@@ -166,7 +166,7 @@ The last command will plot an histogram of the tAI values. Highly
 expressed genes present high tAI values (> 0.4), which means that
 their codon usage resembles the genomic structure of tRNA genes.
 
-Now a good question arises, how much of the total codon usage of this
+Now a good question arises, how much of the total codon usage of these
 genes (in terms of Nc) is due to adaptation to the tRNA gene pool? In
 order to answer this question, we need to calculate Nc for every
 sequence in `ecolik12.ffn`. You should have codonW (or other codon usage
@@ -176,7 +176,8 @@ a set of codon usage statistics. At the shell type:
 ~~~
 $ codonZ ecolik12.ffn ecolik12.w
 ~~~
-Now from the R prompt:
+If you don't have codonW installed, file `ecolik12.w` is already provided
+in the `misc` directory. Now from the R prompt:
 ~~~
 > df <- read.table("ecolik12.w", header=TRUE)
 ~~~
