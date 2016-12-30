@@ -1,5 +1,11 @@
 # The tRNA adaptation index
 
+tAI is an R package (and two perl scripts) for the 
+analysis of codon usage in DNA coding sequences. It implements the tRNA
+adaptation index (tAI) described in dos Reis et al. (2003, 2004). The tAI 
+package is distributed WITHOUT WARRANTY under the terms of the GNU General 
+Public License. See the file LICENSE for details.
+
 INSTALLATION
 ----------------------------------------------------------------------
 
