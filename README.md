@@ -9,11 +9,11 @@ Public License. See the file LICENSE for details.
 INSTALLATION
 ----------------------------------------------------------------------
 
-From the R prompt, type
+From the R prompt type (it is assummed they devtools package is installed)
 
-> require(devtools) # it is assummed they devtools package is installed
+> require(devtools)
 
-> install_bithub("mariodosreis/tai")
+> install_github("mariodosreis/tai")
 
 And that's it! The package has been installed!
 
