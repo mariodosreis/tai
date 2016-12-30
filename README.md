@@ -6,10 +6,9 @@ adaptation index (tAI) described in dos Reis et al. (2003, 2004). The tAI
 package is distributed WITHOUT WARRANTY under the terms of the GNU General 
 Public License. See the file LICENSE for details.
 
-This package is basically the same I used in my paper on tAI (see
-references), with just a few minor modifications to make it a little
-friendlier. If you have any doubts, questions, bug reports,
-etc. please contact me at:
+This package is basically the same I used in my papers on tAI, with just a few minor 
+modifications to make it a little friendlier. If you have any doubts, questions, 
+bug reports, etc. please contact me at:
 
 Mario dos Reis
 
