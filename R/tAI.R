@@ -170,8 +170,37 @@ ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
 #############################################################################
 # Nc plotting function
 #############################################################################
-
-nc.f <- function(x) -6 + x + (34/(x^2 + (1.025 - x)^2))
+#' Nc vs. GC3s
+#' 
+#' Calculates the expected Nc value of a gene for a given GC content at the
+#' third codon positions.
+#' 
+#' @param x a vector of GC contents at third codon positions
+#' 
+#' @details The relationship between Nc and GC content at third positions, x, 
+#' is given by \deqn{Nc = -6 + x + 34/(x^2 + (1.025 - x)^2).} This equation
+#' follows dos Reis et al. (2004, see also Wright 1990 for the original).
+#' 
+#' @return A vector of Nc values for the given GC contents.
+#' 
+#' @author Mario dos Reis
+#' 
+#' @references 
+#' Wright F. (1990) The 'effective number of codons' used in a gene. \emph{Gene}, 
+#' \bold{87:} 23--9.
+#' 
+#' dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+#' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+#' \bold{32:} 5036--44.
+#' 
+#' 
+#' @examples
+#' curve(nc.f(x), xlab="GC3s content", ylab="Nc")
+#' 
+#' @export
+nc.f <- function(x) {
+  -6 + x + 34/(x^2 + (1.025 - x)^2)
+}
 
 plot.nc <- function(nc, gc3s) {
   curve(nc.f, xlim = c(0, 1), ylim = c(20, 62),
