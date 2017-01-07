@@ -6,7 +6,45 @@
 \usage{
 get.tai(x, w)
 }
+\arguments{
+\item{x}{an n by 60 matrix of relative codon frequencies for n open reading frames.}
+
+\item{w}{a vector of length 61 of relative adaptiveness values for codons.}
+}
+\value{
+A vector of length n of tAI values.
+}
 \description{
-The tRNA adaptation index
+Calculates the tRNA adaptation index (tAI) of dos Reis et al. (2003, 2004).
+}
+\details{
+The tRNA adaptation index (tAI) is a measure of the level of 
+co-adaptation between the set of tRNA genes and the codon usage bias of 
+protein-coding genes in a given genome. STOP and methionine codons are 
+ignored. The standard genetic code is assumed.
+}
+\examples{
+# Calculate relative adaptiveness values (ws) for E. coli K-12
+eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
+
+# Calculate tAI for a set of 49 E. coli K-12 coding genes
+eco.tai <- get.tai(ecolik12$m[,-33], eco.ws)
+
+# Plot tAI vs. effective number of codons (Nc)
+plot(eco.tai, ecolik12$w$Nc, xlab="tAI", ylab="Nc")
+
+}
+\author{
+Mario dos Reis
+}
+\references{
+dos Reis M., Wernisch L., and Savva R. (2003) Unexpected correlations 
+between gene expression and codon usage bias from microarray data for the 
+whole \emph{Escherichia coli} K-12 genome. \emph{Nucleic Acids Res.},
+\bold{31:} 6976--85.
+
+dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+\bold{32:} 5036--44.
 }
 

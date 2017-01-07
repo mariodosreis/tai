@@ -23,6 +23,7 @@ follows dos Reis et al. (2004, see also Wright 1990 for the original).
 }
 \examples{
 curve(nc.f(x), xlab="GC3s content", ylab="Nc")
+points(ecolik12$w$GC3s, ecolik12$w$Nc, pch=19)
 
 }
 \author{

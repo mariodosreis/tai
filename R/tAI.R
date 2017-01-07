@@ -32,7 +32,7 @@
 # Adjusted Nc
 ##########################################################################
 #' Adjusted effective number of codons (Nc)
-#' 
+#' @author Mario dos Reis
 #' @export
 nc.adj <- function(nc, gc3) {
 
@@ -53,6 +53,11 @@ nc.adj <- function(nc, gc3) {
 
 
 #' Relative adaptiveness values
+#' 
+#' @author Mario dos Reis
+#' 
+#' @examples 
+#' eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
 #' 
 #' @export
 get.ws <- function(tRNA,  # tRNA gene copy number
@@ -102,15 +107,50 @@ get.ws <- function(tRNA,  # tRNA gene copy number
 # analysed genome
 #############################################################################
 #' The tRNA adaptation index
+#' 
+#' Calculates the tRNA adaptation index (tAI) of dos Reis et al. (2003, 2004).
+#' 
+#' @param x an n by 60 matrix of relative codon frequencies for n open reading frames.
+#' @param w a vector of length 61 of relative adaptiveness values for codons.
+#' 
+#' @details The tRNA adaptation index (tAI) is a measure of the level of 
+#' co-adaptation between the set of tRNA genes and the codon usage bias of 
+#' protein-coding genes in a given genome. STOP and methionine codons are 
+#' ignored. The standard genetic code is assumed.
+#' 
+#' @return A vector of length n of tAI values. 
+#' 
+#' @author Mario dos Reis
+#' 
+#' @references 
+#' dos Reis M., Wernisch L., and Savva R. (2003) Unexpected correlations 
+#' between gene expression and codon usage bias from microarray data for the 
+#' whole \emph{Escherichia coli} K-12 genome. \emph{Nucleic Acids Res.},
+#' \bold{31:} 6976--85.
+#' 
+#' dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+#' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+#' \bold{32:} 5036--44.
+#' 
+#' @examples 
+#' # Calculate relative adaptiveness values (ws) for E. coli K-12
+#' eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
+#' 
+#' # Calculate tAI for a set of 49 E. coli K-12 coding genes
+#' eco.tai <- get.tai(ecolik12$m[,-33], eco.ws)
+#' 
+#' # Plot tAI vs. effective number of codons (Nc)
+#' plot(eco.tai, ecolik12$w$Nc, xlab="tAI", ylab="Nc")
+#' 
 #' @export
 get.tai <- function(x,w) {
 
-  w = log(w)			#calculate log of w
-  n = apply(x,1,'*',w)		#multiply each row of by the weights
-  n = t(n)                      #transpose
-  n = apply(n,1,sum)		#sum rows
-  L = apply(x,1,sum)		#get each ORF length
-  tAI = exp(n/L)		#get tai
+  w = log(w)              #calculate log of w
+  n = apply(x,1,'*',w)    #multiply each row of by the weights
+  n = t(n)                #transpose
+  n = apply(n,1,sum)      #sum rows
+  L = apply(x,1,sum)      #get each ORF length
+  tAI = exp(n/L)          #get tai
   return(tAI)
 }
 
@@ -119,6 +159,7 @@ get.tai <- function(x,w) {
 # between tAI and g(GC3s) - Nc (aka nc.adj)
 ############################################################################
 #' Correlation between tAI and Nc adjusted
+#' @author Mario dos Reis
 #' @export
 get.s <- function(tAI, nc, gc3) {
 
@@ -131,6 +172,7 @@ get.s <- function(tAI, nc, gc3) {
 # Statistical test for tAI
 #############################################################################
 #' Monte Carlo test of correlation between tAI and Nc adjusted
+#' @author Mario dos Reis
 #' @export
 ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
 
@@ -193,17 +235,17 @@ ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
 #' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
 #' \bold{32:} 5036--44.
 #' 
-#' 
 #' @examples
 #' curve(nc.f(x), xlab="GC3s content", ylab="Nc")
+#' points(ecolik12$w$GC3s, ecolik12$w$Nc, pch=19)
 #' 
 #' @export
 nc.f <- function(x) {
   -6 + x + 34/(x^2 + (1.025 - x)^2)
 }
 
-plot.nc <- function(nc, gc3s) {
-  curve(nc.f, xlim = c(0, 1), ylim = c(20, 62),
-        xlab = "GC3s", ylab = "Nc")
-  points(nc ~ gc3s, pch = '+', cex = 0.5)
-}
+# plot.nc <- function(nc, gc3s) {
+#   curve(nc.f, xlim = c(0, 1), ylim = c(20, 62),
+#         xlab = "GC3s", ylab = "Nc")
+#   points(nc ~ gc3s, pch = '+', cex = 0.5)
+# }

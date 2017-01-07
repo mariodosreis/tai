@@ -9,4 +9,7 @@ get.s(tAI, nc, gc3)
 \description{
 Correlation between tAI and Nc adjusted
 }
+\author{
+Mario dos Reis
+}
 

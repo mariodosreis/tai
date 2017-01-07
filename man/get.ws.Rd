@@ -9,4 +9,11 @@ get.ws(tRNA, s = NULL, sking)
 \description{
 Relative adaptiveness values
 }
+\examples{
+eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
+
+}
+\author{
+Mario dos Reis
+}
 

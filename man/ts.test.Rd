@@ -9,4 +9,7 @@ ts.test(m, ws, nc, gc3s, ts.obs, samp.size = 500, n = 1000)
 \description{
 Monte Carlo test of correlation between tAI and Nc adjusted
 }
+\author{
+Mario dos Reis
+}
 

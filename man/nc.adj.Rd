@@ -9,4 +9,7 @@ nc.adj(nc, gc3)
 \description{
 Adjusted effective number of codons (Nc)
 }
+\author{
+Mario dos Reis
+}
 
