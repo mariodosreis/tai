@@ -33,7 +33,7 @@
 ##########################################################################
 #' Adjusted effective number of codons (Nc)
 #' 
-#' The adjusted Nc is Nc - f(gc3s)
+#' The adjusted Nc is f(gc3s) - Nc
 #' 
 #' @param nc a vector of length n with the effective number of codons for genes
 #' @param a vector of length n with corresponding GC composition at third codon positions
