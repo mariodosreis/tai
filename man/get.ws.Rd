@@ -6,8 +6,25 @@
 \usage{
 get.ws(tRNA, s = NULL, sking)
 }
+\arguments{
+\item{tRNA}{a vector of length 64 with tRNA gene copy numbers}
+
+\item{s}{a vector of length 9 with selection penalties for codons}
+
+\item{sking}{a vector of length 1 indicating the superkingdom}
+}
+\value{
+A vector of length 60 of relative adaptiveness values.
+}
 \description{
-Relative adaptiveness values
+Calculates the relative adaptiveness values of codons based on the number 
+of tRNA genes.
+}
+\details{
+The relative adaptiveness values are calculated as described in 
+dos Reis et al. (2003, 2004). If \code{s = NULL}, the s values are set to 
+the optimised values of dos Reis et al. (2004). \code{sking} indicates the 
+superkingdom, with 0 indicating Eukaryota, and 1 Prokaryota.
 }
 \examples{
 eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
@@ -15,5 +32,15 @@ eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
 }
 \author{
 Mario dos Reis
+}
+\references{
+dos Reis M., Wernisch L., and Savva R. (2003) Unexpected correlations 
+between gene expression and codon usage bias from microarray data for the 
+whole \emph{Escherichia coli} K-12 genome. \emph{Nucleic Acids Res.},
+\bold{31:} 6976--85.
+
+dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+\bold{32:} 5036--44.
 }
 

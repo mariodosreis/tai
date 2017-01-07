@@ -7,9 +7,9 @@
 get.tai(x, w)
 }
 \arguments{
-\item{x}{an n by 60 matrix of relative codon frequencies for n open reading frames.}
+\item{x}{an n by 60 matrix of codon frequencies for n open reading frames.}
 
-\item{w}{a vector of length 61 of relative adaptiveness values for codons.}
+\item{w}{a vector of length 60 of relative adaptiveness values for codons.}
 }
 \value{
 A vector of length n of tAI values.
@@ -46,5 +46,8 @@ whole \emph{Escherichia coli} K-12 genome. \emph{Nucleic Acids Res.},
 dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
 usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
 \bold{32:} 5036--44.
+}
+\seealso{
+\code{\link{get.ws}}
 }
 

@@ -17,8 +17,9 @@ Calculates the expected Nc value of a gene for a given GC content at the
 third codon positions.
 }
 \details{
-The relationship between Nc and GC content at third positions, x, 
-is given by \deqn{Nc = -6 + x + 34/(x^2 + (1.025 - x)^2).} This equation
+Without selection on codon bias, the expected value of Nc as a 
+function of GC content at third positions, x, is given by 
+\deqn{f(x) = -6 + x + 34/(x^2 + (1.025 - x)^2).} This equation
 follows dos Reis et al. (2004, see also Wright 1990 for the original).
 }
 \examples{

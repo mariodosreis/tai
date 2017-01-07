@@ -6,8 +6,16 @@
 \usage{
 get.s(tAI, nc, gc3)
 }
+\arguments{
+\item{tAI}{a vector of length n with tAI values for genes}
+
+\item{nc}{a vector of length n with Nc values for genes}
+
+\item{gc3}{a vector of length n with GC content at third codon positions for genes}
+}
 \description{
-Correlation between tAI and Nc adjusted
+Calculates the correlation between tAI and Nc (adjusted for GC content at
+third codon positions).
 }
 \author{
 Mario dos Reis

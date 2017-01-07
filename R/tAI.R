@@ -32,7 +32,28 @@
 # Adjusted Nc
 ##########################################################################
 #' Adjusted effective number of codons (Nc)
+#' 
+#' The adjusted Nc is Nc - f(gc3s)
+#' 
+#' @param nc a vector of length n with the effective number of codons for genes
+#' @param a vector of length n with corresponding GC composition at third codon positions
+#' 
+#' @details The adjusted Nc is calculated as described in dos Reis et al. (2004).
+#' 
+#' @references
+#' dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+#' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+#' \bold{32:} 5036--44.
+#' 
+#' @seealso \code{\link{nc.f}} for the function used to calculate f(gc3s)
+#' 
 #' @author Mario dos Reis
+#' 
+#' @examples 
+#' 
+#' eco.ncadj <- nc.adj(ecolik12$w$Nc, ecolik12$w$GC3s)
+#' plot(eco.ncadj ~ ecolik12$w$Nc, xlab="Nc", ylab="Nc adjusted")
+#' 
 #' @export
 nc.adj <- function(nc, gc3) {
 
@@ -47,22 +68,43 @@ nc.adj <- function(nc, gc3) {
 ##########################################################################
 # Function to calculate relative adaptiveness values
 ##########################################################################
-
 # non-optimised s-values:
 # s <- c(0, 0, 0, 0, 0.5, 0.5, 0.75, 0.5, 0.5)
-
-
 #' Relative adaptiveness values
+#' 
+#' Calculates the relative adaptiveness values of codons based on the number 
+#' of tRNA genes.
+#' 
+#' @param tRNA a vector of length 64 with tRNA gene copy numbers
+#' @param s a vector of length 9 with selection penalties for codons
+#' @param sking a vector of length 1 indicating the superkingdom
+#' 
+#' @details The relative adaptiveness values are calculated as described in 
+#' dos Reis et al. (2003, 2004). If \code{s = NULL}, the s values are set to 
+#' the optimised values of dos Reis et al. (2004). \code{sking} indicates the 
+#' superkingdom, with 0 indicating Eukaryota, and 1 Prokaryota.
+#' 
+#' @return A vector of length 60 of relative adaptiveness values.
 #' 
 #' @author Mario dos Reis
 #' 
 #' @examples 
 #' eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
 #' 
+#' @references 
+#' dos Reis M., Wernisch L., and Savva R. (2003) Unexpected correlations 
+#' between gene expression and codon usage bias from microarray data for the 
+#' whole \emph{Escherichia coli} K-12 genome. \emph{Nucleic Acids Res.},
+#' \bold{31:} 6976--85.
+#' 
+#' dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+#' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+#' \bold{32:} 5036--44.
+#' 
 #' @export
-get.ws <- function(tRNA,  # tRNA gene copy number
-                   s = NULL,     # selective constraints
-                   sking) # super kingdom: 0-eukaryota, 1-prokaryota
+get.ws <- function(tRNA,      # tRNA gene copy number
+                   s = NULL,  # selective constraints
+                   sking)     # super kingdom: 0-eukaryota, 1-prokaryota
 {
   # optimised s-values:
   if(is.null(s)) s <- c(0.0, 0.0, 0.0, 0.0, 0.41, 0.28, 0.9999, 0.68, 0.89)
@@ -110,8 +152,8 @@ get.ws <- function(tRNA,  # tRNA gene copy number
 #' 
 #' Calculates the tRNA adaptation index (tAI) of dos Reis et al. (2003, 2004).
 #' 
-#' @param x an n by 60 matrix of relative codon frequencies for n open reading frames.
-#' @param w a vector of length 61 of relative adaptiveness values for codons.
+#' @param x an n by 60 matrix of codon frequencies for n open reading frames.
+#' @param w a vector of length 60 of relative adaptiveness values for codons.
 #' 
 #' @details The tRNA adaptation index (tAI) is a measure of the level of 
 #' co-adaptation between the set of tRNA genes and the codon usage bias of 
@@ -131,6 +173,8 @@ get.ws <- function(tRNA,  # tRNA gene copy number
 #' dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
 #' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
 #' \bold{32:} 5036--44.
+#' 
+#' @seealso \code{\link{get.ws}}
 #' 
 #' @examples 
 #' # Calculate relative adaptiveness values (ws) for E. coli K-12
@@ -159,6 +203,14 @@ get.tai <- function(x,w) {
 # between tAI and g(GC3s) - Nc (aka nc.adj)
 ############################################################################
 #' Correlation between tAI and Nc adjusted
+#' 
+#' Calculates the correlation between tAI and Nc (adjusted for GC content at
+#' third codon positions).
+#' 
+#' @param tAI a vector of length n with tAI values for genes
+#' @param nc a vector of length n with Nc values for genes
+#' @param gc3 a vector of length n with GC content at third codon positions for genes
+#' 
 #' @author Mario dos Reis
 #' @export
 get.s <- function(tAI, nc, gc3) {
@@ -172,9 +224,57 @@ get.s <- function(tAI, nc, gc3) {
 # Statistical test for tAI
 #############################################################################
 #' Monte Carlo test of correlation between tAI and Nc adjusted
+#' 
+#' Calculates the p-value (using a Monte Carlo or randomisation test) that the 
+#' correlation (the S value) between tAI and the adjusted Nc for a set of 
+#' genes is different from zero.
+#' 
+#' @param m a k by 60 matrix of codon frequencies for k genes
+#' @param ws vector of length 60 of relative adaptiveness values of codons
+#' @param nc vector of length k of Nc values for genes
+#' @param gc3s vector of length k of GC content at third codon position for genes
+#' @param ts.obs vector of length 1 with observed correlation between tAI and Nc adjusted for the k genes
+#' @param samp.size a vector of length 1 with the number of genes to be sampled from m (see details)
+#' @param n the number of permutations of ws in the randomisation test
+#' 
+#' @details The Monte Carlo test is described in dos Reis et al. (2004). When
+#' working with complete genomes, matrix \code{m} can have a very large number 
+#' of rows (large k). In this case it may be advisable to choose \code{samp.size}
+#' < k to speed up the computation.
+#' 
+#' @return A list with elements \code{p.value}, the p-value for the test, and 
+#' \code{ts.simulated}, a vector of length \code{n} with the simulated 
+#' correlations between tAI and adjusted Nc.
+#' 
+#' @examples 
+#' eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
+#' eco.tai <- get.tai(ecolik12$m[,-33], eco.ws)
+#' ts.obs <- get.s(eco.tai, ecolik12$w$Nc, ecolik12$w$GC3s)
+#' 
+#' # The S-value (dos Reis et al. 2004):
+#' ts.obs # [1] 0.9065442
+#' 
+#' # There seems to be a high correlation between tAI and Nc adjusted for
+#' # the 49 genes in ecolik12$m. Is the correlation statistically significant?
+#' ts.mc <- ts.test(ecolik12$m[,-33], eco.ws, ecolik12$w$Nc, ecolik12$w$GC3s, 
+#'                  ts.obs, samp.size=dim(ecolik12$m)[1])
+#' # The p-value is zero:
+#' ts.mc$p.value # [1] 0
+#' 
+#' # Histogram of simulated S-values:
+#' hist(ts.mc$ts.simulated, n=50, xlab = "Simulated S values", 
+#'      xlim=c(min(ts.mc$ts.simulated), ts.obs))
+#' # Add the observed S-value as a red vertical line:
+#' abline(v=ts.obs, col="red")
+#' 
+#' @references 
+#' dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+#' usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+#' \bold{32:} 5036--44.
+#' 
 #' @author Mario dos Reis
 #' @export
-ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
+ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size, n=1000) {
 
   # create a matrix of randomly permuted w-values:
   ws.permuted <- matrix(rep(ws, n), ncol = 60, byrow = T)
@@ -196,15 +296,8 @@ ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
     ts[i] <- co
   }
 
-  # estimate the density function of ts values:
-  ts.den <- density(ts)
-  # bin width:
-  ts.width <- ts.den$x[2] - ts.den$x[1]
   # p-values is:
-  p.value <- 1 - sum(ts.width * ts.den$y[ts.den$x < ts.obs])
-  # This method is approximate, it might happen that the above sum > 1
-  # then, p.value needs to be corrected:
-  if(p.value < 0) p.value <- 0
+  p.value <- sum(ts > ts.obs)
 
   return(list(p.value=p.value, ts.simulated=ts))
 }
@@ -219,8 +312,9 @@ ts.test <- function(m, ws, nc, gc3s, ts.obs, samp.size=500, n=1000) {
 #' 
 #' @param x a vector of GC contents at third codon positions
 #' 
-#' @details The relationship between Nc and GC content at third positions, x, 
-#' is given by \deqn{Nc = -6 + x + 34/(x^2 + (1.025 - x)^2).} This equation
+#' @details Without selection on codon bias, the expected value of Nc as a 
+#' function of GC content at third positions, x, is given by 
+#' \deqn{f(x) = -6 + x + 34/(x^2 + (1.025 - x)^2).} This equation
 #' follows dos Reis et al. (2004, see also Wright 1990 for the original).
 #' 
 #' @return A vector of Nc values for the given GC contents.
@@ -249,3 +343,29 @@ nc.f <- function(x) {
 #         xlab = "GC3s", ylab = "Nc")
 #   points(nc ~ gc3s, pch = '+', cex = 0.5)
 # }
+
+#############################################################################
+# Data documentation
+#############################################################################
+#' E. coli K-12 codon bias and tRNA numbers
+#' 
+#' A list with elements \code{trna}, a vector of length 64 of tRNA gene copy numbers 
+#' in the Escherichia coli K-12 genome, \code{w}, a data frame with some codon bias 
+#' statistics for 49 E. coli K-12 coding genes, and \code{m}, a 49 by 61 matrix of 
+#' codon frequencies for the 49 genes in question.
+#'
+#' @author Mario dos Reis
+#' 
+#' @examples 
+#' # 87 tRNA genes in the E. coli K-12 genome:
+#' sum(ecolik12$trna)
+#' 
+#' # Two copies are isoacceptors for Phe, with anticodon GAA (codon TTC)
+#' ecolik12$trna[2]
+#' 
+#' # ecolik12$w, a data frame with codon bias statistics
+#' names(ecolik12$w)
+#' 
+#' # Effective number of codons vs. gene length (in codons)
+#' plot(ecolik12$w$Nc, ecolik12$w$L_aa, xlab="Nc", ylab="Gene length")
+"ecolik12"

@@ -4,12 +4,67 @@
 \alias{ts.test}
 \title{Monte Carlo test of correlation between tAI and Nc adjusted}
 \usage{
-ts.test(m, ws, nc, gc3s, ts.obs, samp.size = 500, n = 1000)
+ts.test(m, ws, nc, gc3s, ts.obs, samp.size, n = 1000)
+}
+\arguments{
+\item{m}{a k by 60 matrix of codon frequencies for k genes}
+
+\item{ws}{vector of length 60 of relative adaptiveness values of codons}
+
+\item{nc}{vector of length k of Nc values for genes}
+
+\item{gc3s}{vector of length k of GC content at third codon position for genes}
+
+\item{ts.obs}{vector of length 1 with observed correlation between tAI and Nc adjusted for the k genes}
+
+\item{samp.size}{a vector of length 1 with the number of genes to be sampled from m (see details)}
+
+\item{n}{the number of permutations of ws in the randomisation test}
+}
+\value{
+A list with elements \code{p.value}, the p-value for the test, and 
+\code{ts.simulated}, a vector of length \code{n} with the simulated 
+correlations between tAI and adjusted Nc.
 }
 \description{
-Monte Carlo test of correlation between tAI and Nc adjusted
+Calculates the p-value (using a Monte Carlo or randomisation test) that the 
+correlation (the S value) between tAI and the adjusted Nc for a set of 
+genes is different from zero.
+}
+\details{
+The Monte Carlo test is described in dos Reis et al. (2004). When
+working with complete genomes, matrix \code{m} can have a very large number 
+of rows (large k). In this case it may be advisable to choose \code{samp.size}
+< k to speed up the computation.
+}
+\examples{
+eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
+eco.tai <- get.tai(ecolik12$m[,-33], eco.ws)
+ts.obs <- get.s(eco.tai, ecolik12$w$Nc, ecolik12$w$GC3s)
+
+# The S-value (dos Reis et al. 2004):
+ts.obs # [1] 0.9065442
+
+# There seems to be a high correlation between tAI and Nc adjusted for
+# the 49 genes in ecolik12$m. Is the correlation statistically significant?
+ts.mc <- ts.test(ecolik12$m[,-33], eco.ws, ecolik12$w$Nc, ecolik12$w$GC3s, 
+                 ts.obs, samp.size=dim(ecolik12$m)[1])
+# The p-value is zero:
+ts.mc$p.value # [1] 0
+
+# Histogram of simulated S-values:
+hist(ts.mc$ts.simulated, n=50, xlab = "Simulated S values", 
+     xlim=c(min(ts.mc$ts.simulated), ts.obs))
+# Add the observed S-value as a red vertical line:
+abline(v=ts.obs, col="red")
+
 }
 \author{
 Mario dos Reis
+}
+\references{
+dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+\bold{32:} 5036--44.
 }
 

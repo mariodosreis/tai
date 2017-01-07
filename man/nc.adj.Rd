@@ -6,10 +6,32 @@
 \usage{
 nc.adj(nc, gc3)
 }
+\arguments{
+\item{nc}{a vector of length n with the effective number of codons for genes}
+
+\item{a}{vector of length n with corresponding GC composition at third codon positions}
+}
 \description{
-Adjusted effective number of codons (Nc)
+The adjusted Nc is Nc - f(gc3s)
+}
+\details{
+The adjusted Nc is calculated as described in dos Reis et al. (2004).
+}
+\examples{
+
+eco.ncadj <- nc.adj(ecolik12$w$Nc, ecolik12$w$GC3s)
+plot(eco.ncadj ~ ecolik12$w$Nc, xlab="Nc", ylab="Nc adjusted")
+
 }
 \author{
 Mario dos Reis
+}
+\references{
+dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
+usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
+\bold{32:} 5036--44.
+}
+\seealso{
+\code{\link{nc.f}} for the function used to calculate f(gc3s)
 }
 
