@@ -196,7 +196,7 @@ pool).
 ~~~
 > cor(eco.tai, df$Nc, use="p")
 ~~~
-You should get a value of -0.9100338
+You should get a value of –0.9100338
 
 Formally, we can calculate the correlation between tAI, and the
 corrected Nc, Nc - f(GC3s), we call this correlation S, because it
