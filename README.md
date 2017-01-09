@@ -14,9 +14,7 @@ Mario dos Reis
 
 mariodosreis@gmail.com
 
-School of Biological and Chemical Sciences
-
-Queen Mary University of London
+School of Biological and Chemical Sciences  Queen Mary University of London
 
 
 INSTALLATION
