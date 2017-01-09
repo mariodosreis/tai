@@ -14,8 +14,7 @@ Mario dos Reis
 
 mariodosreis@gmail.com
 
-School of Biological and Chemical Sciences
-
+School of Biological and Chemical Sciences  
 Queen Mary University of London
 
 
