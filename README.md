@@ -199,7 +199,7 @@ pool).
 You should get a value of –0.9100338
 
 Formally, we can calculate the correlation between tAI, and the
-corrected Nc, f(GC3s) — Nc, we call this correlation S, because it
+corrected Nc, f(GC3s) – Nc, we call this correlation S, because it
 reflects the intensity of translational selection acting on our sample
 of genes:
 ~~~
