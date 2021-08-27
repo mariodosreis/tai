@@ -132,7 +132,7 @@ the 61 coding codons, arranged in this fashion:
 Notice that STOP codons have been excluded. codonM, also ignores the
 first codon in every sequence, this is because it is always a
 Methionine codon (even if its not coded by the canonical ATG). The codons
-above follow the TCAG ordering. The full genetic code ordered this way is
+above follow the TCAG ordering. The standard genetic code ordered this way is
 
 ~~~
 AAs    = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG
@@ -161,9 +161,10 @@ calculate tAI:
 This file contains 64 rows, corresponding to the anticodon complements of each
 tRNA species (e.g. if the tRNA anticodon is GAA, the complement is TTC). The
 tRNAs  are ordered according to their anticodon complement, in the same order as
-in codonM's output as indicated above, but with added STOP codons. STOP codon
-are at positions 11, 12 and 15 as in the genetic code diagram above. Now we can
-calculate  the relative adaptiveness values for each codon in the E. coli genes:
+in codonM's output as indicated above, but with added STOP codons. STOP codons
+are at positions 11, 12 and 15 as in the standard genetic code diagram above.
+Now we can calculate the relative adaptiveness values for each codon in the E.
+coli genes:
 
 ~~~
 > eco.ws <- get.ws(tRNA=eco.trna, sking=1)
