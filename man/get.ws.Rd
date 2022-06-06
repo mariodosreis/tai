@@ -30,9 +30,6 @@ superkingdom, with 0 indicating Eukaryota, and 1 Prokaryota.
 eco.ws <- get.ws(tRNA=ecolik12$trna, sking=1)
 
 }
-\author{
-Mario dos Reis
-}
 \references{
 dos Reis M., Wernisch L., and Savva R. (2003) Unexpected correlations 
 between gene expression and codon usage bias from microarray data for the 
@@ -43,4 +40,6 @@ dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon
 usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
 \bold{32:} 5036--44.
 }
-
+\author{
+Mario dos Reis
+}

@@ -36,7 +36,7 @@
 #' The adjusted Nc is f(gc3s) - Nc
 #' 
 #' @param nc a vector of length n with the effective number of codons for genes
-#' @param a vector of length n with corresponding GC composition at third codon positions
+#' @param gc3 a vector of length n with corresponding GC composition at third codon positions
 #' 
 #' @details The adjusted Nc is calculated as described in dos Reis et al. (2004).
 #' 
@@ -212,6 +212,7 @@ get.tai <- function(x,w) {
 #' @param gc3 a vector of length n with GC content at third codon positions for genes
 #' 
 #' @author Mario dos Reis
+#' @importFrom stats cor
 #' @export
 get.s <- function(tAI, nc, gc3) {
 

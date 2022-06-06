@@ -27,9 +27,6 @@ curve(nc.f(x), xlab="GC3s content", ylab="Nc")
 points(ecolik12$w$GC3s, ecolik12$w$Nc, pch=19)
 
 }
-\author{
-Mario dos Reis
-}
 \references{
 Wright F. (1990) The 'effective number of codons' used in a gene. \emph{Gene}, 
 \bold{87:} 23--9.
@@ -38,4 +35,6 @@ dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon
 usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
 \bold{32:} 5036--44.
 }
-
+\author{
+Mario dos Reis
+}

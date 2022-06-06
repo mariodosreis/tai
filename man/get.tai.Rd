@@ -34,9 +34,6 @@ eco.tai <- get.tai(ecolik12$m[,-33], eco.ws)
 plot(eco.tai, ecolik12$w$Nc, xlab="tAI", ylab="Nc")
 
 }
-\author{
-Mario dos Reis
-}
 \references{
 dos Reis M., Wernisch L., and Savva R. (2003) Unexpected correlations 
 between gene expression and codon usage bias from microarray data for the 
@@ -50,4 +47,6 @@ usage preferences: a test for translational selection. \emph{Nucleic Acids Res.}
 \seealso{
 \code{\link{get.ws}}
 }
-
+\author{
+Mario dos Reis
+}
