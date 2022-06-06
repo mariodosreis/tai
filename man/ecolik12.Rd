@@ -31,4 +31,3 @@ plot(ecolik12$w$Nc, ecolik12$w$L_aa, xlab="Nc", ylab="Gene length")
 Mario dos Reis
 }
 \keyword{datasets}
-

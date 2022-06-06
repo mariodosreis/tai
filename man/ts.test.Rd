@@ -59,12 +59,11 @@ hist(ts.mc$ts.simulated, n=50, xlab = "Simulated S values",
 abline(v=ts.obs, col="red")
 
 }
-\author{
-Mario dos Reis
-}
 \references{
 dos Reis M., Savva R., and Wernisch L. (2004) Solving the riddle of codon 
 usage preferences: a test for translational selection. \emph{Nucleic Acids Res.},
 \bold{32:} 5036--44.
 }
-
+\author{
+Mario dos Reis
+}
