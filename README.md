@@ -14,7 +14,7 @@ Mario dos Reis
 
 mariodosreis@gmail.com
 
-School of Biological and Chemical Sciences  
+School of Biological and Behavioural Sciences  
 Queen Mary University of London
 
 
@@ -214,6 +214,6 @@ For more details, read the references!
 REFERENCES
 ----------------------------------------------------------------------
 
-[1] dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between gene expression and codon usage bias from microarray data for the whole Escherichia coli K-12 genome. *Nucleic Acids Research*, **31:** 6976–6985.
+1. dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between gene expression and codon usage bias from microarray data for the whole Escherichia coli K-12 genome. *Nucleic Acids Research*, **31:** 6976–6985.
 
-[2] dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage preferences: a test for translational selection. *Nucleic Acids Research*, **32:** 5036–5044.
+2. dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage preferences: a test for translational selection. *Nucleic Acids Research*, **32:** 5036–5044.

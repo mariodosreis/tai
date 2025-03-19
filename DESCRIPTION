@@ -8,4 +8,5 @@ Maintainer: Mario dos Reis <mariodosreis@gmail.com>
 Description: The tRNA adaptation index (tAI) is a measure of the level of co-adaptation between the set of tRNA genes and the codon usage bias of protein-coding genes in a given genome. 
 License: GPL (>= 2)
 LazyData: TRUE
-RoxygenNote: 6.1.0
+RoxygenNote: 7.3.2
+Encoding: UTF-8
