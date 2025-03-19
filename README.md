@@ -202,7 +202,7 @@ quickly and efficiently compute a set of codon usage statistics. At the shell
 type:
 
 ~~~
-$ codonZ ecolik12.ffn ecolik12.w
+$ perl codonZ ecolik12.ffn ecolik12.w
 ~~~
 
 If you don't have codonW installed, file `ecolik12.w` is already provided in the
@@ -253,7 +253,9 @@ REFERENCES
 1. dos Reis M, Savva R, and Wernisch L. (2003) Unexpected correlations between
 gene expression and codon usage bias from microarray data for the whole
 Escherichia coli K-12 genome. *Nucleic Acids Research*, **31:** 6976–6985.
+[DOI: 10.1093/nar/gkg897](https://dx.doi.org/10.1093/nar/gkg897)
 
 2. dos Reis M, Wernisch L, and Savva R. (2004) Solving the riddle of codon usage
 preferences: a test for translational selection. *Nucleic Acids Research*,
 **32:** 5036–5044.
+[DOI: 10.1093/nar/gkh834](https://dx.doi.org/10.1093/nar/gkh834)
