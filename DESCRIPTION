@@ -2,7 +2,7 @@ Package: tAI
 Type: Package
 Title: The tRNA Adaptation Index
 Version: 0.2.2
-Date: 2023-03-19
+Date: 2025-03-19
 Authors@R: person(given = c("Mario"),
                     family = "dos Reis",
                     role = c("aut", "cre"),
