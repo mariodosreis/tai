@@ -1,11 +1,15 @@
 Package: tAI
 Type: Package
 Title: The tRNA Adaptation Index
-Version: 0.2.1
-Date: 2019-03-05
-Author: Mario dos Reis
-Maintainer: Mario dos Reis <mariodosreis@gmail.com>
-Description: The tRNA adaptation index (tAI) is a measure of the level of co-adaptation between the set of tRNA genes and the codon usage bias of protein-coding genes in a given genome. 
+Version: 0.2.2
+Date: 2023-03-19
+Authors@R: person(given = c("Mario"),
+                    family = "dos Reis",
+                    role = c("aut", "cre"),
+                    email = "mariodosreis@gmail.com")
+Description: The tRNA adaptation index (tAI) is a measure of the level of 
+  co-adaptation between the set of tRNA genes and the codon usage bias of 
+  protein-coding genes in a given genome. 
 License: GPL (>= 2)
 LazyData: TRUE
 RoxygenNote: 7.3.2
