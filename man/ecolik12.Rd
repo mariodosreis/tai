@@ -4,7 +4,9 @@
 \name{ecolik12}
 \alias{ecolik12}
 \title{E. coli K-12 codon bias and tRNA numbers}
-\format{An object of class \code{list} of length 3.}
+\format{
+An object of class \code{list} of length 3.
+}
 \usage{
 ecolik12
 }
