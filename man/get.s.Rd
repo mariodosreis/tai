@@ -13,6 +13,9 @@ get.s(tAI, nc, gc3)
 
 \item{gc3}{a vector of length n with GC content at third codon positions for genes}
 }
+\value{
+Numeric of length one with the correlation between tAI and Nc adjusted
+}
 \description{
 Calculates the correlation between tAI and Nc (adjusted for GC content at
 third codon positions).

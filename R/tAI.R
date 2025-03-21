@@ -47,6 +47,7 @@
 #' 
 #' @seealso \code{\link{nc.f}} for the function used to calculate f(gc3s)
 #' 
+#' @return A vector of length n with adjusted Nc values
 #' @author Mario dos Reis
 #' 
 #' @examples 
@@ -211,6 +212,7 @@ get.tai <- function(x,w) {
 #' @param nc a vector of length n with Nc values for genes
 #' @param gc3 a vector of length n with GC content at third codon positions for genes
 #' 
+#' @return Numeric of length one with the correlation between tAI and Nc adjusted
 #' @author Mario dos Reis
 #' @importFrom stats cor
 #' @export

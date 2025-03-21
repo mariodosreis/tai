@@ -11,6 +11,9 @@ nc.adj(nc, gc3)
 
 \item{gc3}{a vector of length n with corresponding GC composition at third codon positions}
 }
+\value{
+A vector of length n with adjusted Nc values
+}
 \description{
 The adjusted Nc is f(gc3s) - Nc
 }
