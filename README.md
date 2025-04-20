@@ -27,7 +27,7 @@ tAI is now available from CRAN. From the R prompt:
 install.packages("tAI")
 ~~~
 
-Alternatively, (assumming you have the devtools package installed) you can also install it from GitHub:
+Alternatively, (assumming you have the devtools package installed) you can also install tAI from GitHub:
 
 ~~~R
 devtools::install_github("mariodosreis/tai")
@@ -93,7 +93,7 @@ arranged in this fashion:
 13     TGG      29     CGG      45     AGG      61     GGG
 ~~~
 
-Notice that STOP codons have been excluded. codonM, also ignores the first codon
+Notice that STOP codons have been excluded. Also, codonM ignores the first codon
 in every sequence, this is because it is always a Methionine codon (even if its
 not coded by the canonical ATG). The codons above follow the TCAG ordering. The
 standard genetic code ordered this way is
