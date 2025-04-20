@@ -21,7 +21,13 @@ Queen Mary University of London
 INSTALLATION
 ----------------------------------------------------------------------
 
-From the R prompt (assumming you have the devtools package installed) type
+tAI is now available from CRAN. From the R prompt:
+
+~~~R
+install.packages("tAI")
+~~~
+
+Alternatively, (assumming you have the devtools package installed) you can also install it from GitHub:
 
 ~~~R
 devtools::install_github("mariodosreis/tai")
@@ -53,11 +59,11 @@ The file `ecolik12.m` contains the output of the codonM script: a matrix of
 codon frequencies per ORF. It should look like:
 
 ~~~
-11	19	10	13	11	10	6	9	...
-6	4	3	6	0	6	1	3	...
-13	11	5	12	0	2	3	5	...
-0	0	2	0	1	1	1	0	...
-8	8	2	6	0	4	2	1	...
+11      19      10      13      11      10      6       9       ...
+6       4       3       6       0       6       1       3       ...
+13      11      5       12      0       2       3       5       ...
+0       0       2       0       1       1       1       0       ...
+8       8       2       6       0       4       2       1       ...
 ...
 ~~~
 
@@ -66,67 +72,25 @@ file `ecolik12.m`), and the columns represent each one of the 61 coding codons,
 arranged in this fashion:
 
 ~~~
-1	TTT
-2	TTC
-3	TTA
-4	TTG
-5	TCT
-6	TCC
-7	TCA
-8	TCG
-9	TAT
-10	TAC
-11	TGT
-12	TGC
-13	TGG
-14	CTT
-15	CTC
-16	CTA
-17	CTG
-18	CCT
-19	CCC
-20	CCA
-21	CCG
-22	CAT
-23	CAC
-24	CAA
-25	CAG
-26	CGT
-27	CGC
-28	CGA
-29	CGG
-30	ATT
-31	ATC
-32	ATA
-33	ATG
-34	ACT
-35	ACC
-36	ACA
-37	ACG
-38	AAT
-39	AAC
-40	AAA
-41	AAG
-42	AGT
-43	AGC
-44	AGA
-45	AGG
-46	GTT
-47	GTC
-48	GTA
-49	GTG
-50	GCT
-51	GCC
-52	GCA
-53	GCG
-54	GAT
-55	GAC
-56	GAA
-57	GAG
-58	GGT
-59	GGC
-60	GGA
-61	GGG
+1      TTT      14     CTT      30     ATT      46     GTT
+2      TTC      15     CTC      31     ATC      47     GTC
+3      TTA      16     CTA      32     ATA      48     GTA
+4      TTG      17     CTG      33     ATG      49     GTG
+
+5      TCT      18     CCT      34     ACT      50     GCT
+6      TCC      19     CCC      35     ACC      51     GCC
+7      TCA      20     CCA      36     ACA      52     GCA
+8      TCG      21     CCG      37     ACG      53     GCG
+
+9      TAT      22     CAT      38     AAT      54     GAT
+10     TAC      23     CAC      39     AAC      55     GAC
+-      -        24     CAA      40     AAA      56     GAA
+-      -        25     CAG      41     AAG      57     GAG
+
+11     TGT      26     CGT      42     AGT      58     GGT
+12     TGC      27     CGC      43     AGC      59     GGC
+-      -        28     CGA      44     AGA      60     GGA
+13     TGG      29     CGG      45     AGG      61     GGG
 ~~~
 
 Notice that STOP codons have been excluded. codonM, also ignores the first codon
