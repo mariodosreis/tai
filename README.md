@@ -138,9 +138,7 @@ Now, lets load the output of codonM into R:
 eco.m <- matrix(scan("ecolik12.m"), ncol=61, byrow=TRUE)
 ~~~
 
-We will ignore Methionine codons in our analysis (there is no automatic way to
-differentiate between 'START' Met-tRNA genes and normal Met-tRNAs in any
-genome):
+We will ignore Methionine codons in our analysis:
 
 ~~~R
 eco.m <- eco.m[,-33]
